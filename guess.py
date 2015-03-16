@@ -14,6 +14,6 @@ while guess != number_to_guess and guesses_taken < maximum_guesses:
   guess = int(input("Please enter your guess: "))
 
 if guess == number_to_guess:
-  print("You got it right!")
+  print("YAY! You got it right:)")
 elif guesses_taken == maximum_guesses:
-  print("You ran out of guesses...")
+  print("Get Shreked")
