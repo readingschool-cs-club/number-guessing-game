@@ -5,13 +5,13 @@
 
 maximum_guesses = 10
 
-number_to_guess = input("Please enter a number: ")
+number_to_guess = int(input("Please enter a number: "))
 
 guesses_taken = 0
 guess = ""
 while guess != number_to_guess and guesses_taken < maximum_guesses:
   guesses_taken += 1
-  guess = input("Please enter your guess: ")
+  guess = int(input("Please enter your guess: "))
 
 if guess == number_to_guess:
   print("You got it right!")
