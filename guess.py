@@ -31,13 +31,13 @@ def get_random_number():
 def get_user_number():
     """Prompt for and return a valid integer given by Player 1."""
     # don't echo so only Player 1 knows what they entered
-    num = int(getpass("Please enter a number: "))
+    num = read_num("Please enter a number: ", getpass)
 
     return num
 
 def get_guess():
     """Prompt Player 2 for an valid integer and return it."""
-    guess_num = int(input("Please enter your guess: "))
+    guess_num = read_num("Please enter your guess: ")
     return guess_num
 
 def get_higher_lower_hint(number_to_guess, guess):
