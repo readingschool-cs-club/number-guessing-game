@@ -13,6 +13,20 @@ def read_num(prompt=None, func=input):
         except ValueError:
             pass
 
+def select(options):
+    """Allow selection of a choice from a list"""
+    print("Pick a number: ")
+    for i, choice in enumerate(options):
+        print("%d) %s" % (i + 1, choice[0]))
+
+    while True:
+        try:
+            num = read_num("Choose: ")
+            if num > 0:
+                return options[num - 1][1]
+        except IndexError:
+            pass
+
 def get_number_to_guess():
     """Return the number for Player 2 to guess."""
     #num = get_random_number()
