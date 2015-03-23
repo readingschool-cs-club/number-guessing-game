@@ -6,10 +6,14 @@
 from random import randint
 from getpass import getpass
 
-def read_num(prompt=None, func=input):
+def read_num(prompt=None, func=input, default=None):
     while True:
         try:
-            return int(func(prompt))
+            answer = func(prompt)
+            if not answer and default:
+                return default
+            else:
+                return int(answer)
         except ValueError:
             pass
 
