@@ -7,10 +7,15 @@ from random import randint
 from getpass import getpass
 
 def read_num(prompt=None, func=input, default=None):
+    if default is not None:
+        if prompt.endswith(" "):
+            prompt = prompt[:-1]
+        prompt = prompt + " (default: %d): " % default
+
     while True:
         try:
             answer = func(prompt)
-            if not answer and default:
+            if default is not None and not answer.strip():
                 return default
             else:
                 return int(answer)
@@ -32,8 +37,8 @@ def select(options, prompt="Choose: "):
 
 def get_random_number():
     """Return a random integer."""
-    lower_limit = read_num("What is the minimum? ")
-    upper_limit = read_num("What is the maximum? ")
+    lower_limit = read_num("What is the minimum? ", default=0)
+    upper_limit = read_num("What is the maximum? ", default=10)
 
     num = randint(lower_limit, upper_limit)
 
