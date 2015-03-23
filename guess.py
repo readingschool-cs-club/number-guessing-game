@@ -58,36 +58,39 @@ def get_higher_lower_hint(number_to_guess, guess):
         return SAME
 
 
+def main():
+    # set initial game state
+    max_guesses = 3
+    number_to_guess = get_number_to_guess()
 
-# set initial game state
-max_guesses = 3
-number_to_guess = get_number_to_guess()
+    # declare & initialise some variables to use in the while loop
+    guesses_taken = 0
+    guessed_correctly = False
 
-# declare & initialise some variables to use in the while loop
-guesses_taken = 0
-guessed_correctly = False
+    while not guessed_correctly and guesses_taken < max_guesses:
+        # get another guess from Player 2
+        guess = get_guess()
 
-while not guessed_correctly and guesses_taken < max_guesses:
-    # get another guess from Player 2
-    guess = get_guess()
+        # increment guesses taken
+        guesses_taken += 1
 
-    # increment guesses taken
-    guesses_taken += 1
+        # check if Player 2 guessed correctly
+        if guess == number_to_guess:
+            guessed_correctly = True
+            # exit while loop early (not actually required, but shows
+            # program flow more clearly)
+            break
+        else:
+            # they didn't: give them a hot/cold hint
+            print("Nope! That's not it.")
+            adj = get_higher_lower_hint(number_to_guess, guess)
+            print("The number to guess is %s that." % adj)
 
-    # check if Player 2 guessed correctly
-    if guess == number_to_guess:
-        guessed_correctly = True
-        # exit while loop early (not actually required, but shows
-        # program flow more clearly)
-        break
-    else:
-        # they didn't: give them a hot/cold hint
-        print("Nope! That's not it.")
-        adj = get_higher_lower_hint(number_to_guess, guess)
-        print("The number to guess is %s that." % adj)
+    # game has ended: print some messages based on the outcome
+    if guessed_correctly:
+        print("You got it right!")
+    elif guesses_taken == max_guesses:
+        print("You ran out of guesses...")
 
-# game has ended: print some messages based on the outcome
-if guessed_correctly:
-    print("You got it right!")
-elif guesses_taken == max_guesses:
-    print("You ran out of guesses...")
+if __name__ == "__main__":
+    main()
