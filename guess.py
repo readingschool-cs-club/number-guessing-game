@@ -28,8 +28,8 @@ def select(options, prompt="Choose: "):
 
 def get_random_number():
     """Return a random integer."""
-    lower_limit = 0
-    upper_limit = 10
+    lower_limit = read_num("What is the minimum? ")
+    upper_limit = read_num("What is the maximum? ")
 
     num = randint(lower_limit, upper_limit)
 
