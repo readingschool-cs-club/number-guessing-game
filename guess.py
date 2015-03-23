@@ -6,6 +6,13 @@
 from random import randint
 from getpass import getpass
 
+def read_num(prompt=None, func=input):
+    while True:
+        try:
+            return int(func(prompt))
+        except ValueError:
+            pass
+
 def get_number_to_guess():
     """Return the number for Player 2 to guess."""
     #num = get_random_number()
