@@ -103,6 +103,7 @@ def main():
         print("You got it right!")
     elif guesses_taken == max_guesses:
         print("You ran out of guesses...")
+        print("It was %d!" % number_to_guess)
 
 if __name__ == "__main__":
     main()
