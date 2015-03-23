@@ -27,12 +27,6 @@ def select(options):
         except IndexError:
             pass
 
-def get_number_to_guess():
-    """Return the number for Player 2 to guess."""
-    #num = get_random_number()
-    num = get_user_number()
-    return num
-
 def get_random_number():
     """Return a random integer."""
     lower_limit = 0
@@ -75,7 +69,11 @@ def get_higher_lower_hint(number_to_guess, guess):
 def main():
     # set initial game state
     max_guesses = 3
-    number_to_guess = get_number_to_guess()
+    print("How should I choose the number?")
+    number_to_guess = select([
+        ("I will choose it", get_user_number),
+        ("Choose a random number", get_random_number),
+    ])()
 
     # declare & initialise some variables to use in the while loop
     guesses_taken = 0
